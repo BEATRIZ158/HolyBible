@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Ícone HolyBible</title>
+  <desc id="desc">Livro aberto minimalista em marrom profundo, marfim e dourado, simbolizando leitura e a Palavra.</desc>
+
+  <!-- Símbolo central: livro aberto -->
+  <g stroke="#514B43" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Páginas -->
+    <path d="M128 91
+             C105 75 75 70 43 80
+             C37 82 33 88 33 95
+             V174
+             C33 181 40 186 47 184
+             C78 176 105 181 128 198
+             Z"
+          fill="#F4EBDD" stroke-width="7"/>
+    <path d="M128 91
+             C151 75 181 70 213 80
+             C219 82 223 88 223 95
+             V174
+             C223 181 216 186 209 184
+             C178 176 151 181 128 198
+             Z"
+          fill="#E8D8B8" stroke-width="7"/>
+
+    <!-- Dobra central -->
+    <path d="M128 92 V197" fill="none" stroke-width="6"/>
+
+    <!-- Linhas de leitura -->
+    <g fill="none" stroke-width="5" opacity=".88">
+      <path d="M57 105 C78 100 98 103 112 112"/>
+      <path d="M56 126 C78 121 98 124 112 133"/>
+      <path d="M57 147 C78 143 97 146 112 154"/>
+      <path d="M144 112 C158 103 178 100 199 105"/>
+      <path d="M144 133 C158 124 178 121 200 126"/>
+      <path d="M144 154 C159 146 178 143 199 147"/>
+    </g>
+
+    <!-- Pequeno detalhe dourado, remetendo à luz do conhecimento -->
+    <path d="M128 48 V63 M105 57 L112 69 M151 57 L144 69"
+          fill="none" stroke="#B8955B" stroke-width="6"/>
+    <circle cx="128" cy="39" r="4.5" fill="#B8955B" stroke="none"/>
+  </g>
+</svg>

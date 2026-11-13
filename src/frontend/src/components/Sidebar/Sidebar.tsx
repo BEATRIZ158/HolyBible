@@ -1,5 +1,6 @@
 
 import './sidebar.css';
+import Logo from '../../assets/images/icons/holybible-icon.svg';
 
 function Sidebar() {
     return (
@@ -7,7 +8,8 @@ function Sidebar() {
 
             {/* Cabeçalho */}
             <header className="sidebar-header">
-                <h1>HolyBible</h1>
+                <img src={Logo} alt="Logo HolyBible" className="sidebar-logo"/>
+                <h1 className="sidebar-title">HolyBible</h1>
             </header>
 
             {/* Conteúdo central */}

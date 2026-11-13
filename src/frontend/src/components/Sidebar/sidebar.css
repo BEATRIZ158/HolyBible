@@ -11,15 +11,46 @@
     color: var(--color-deep-brown);
 }
 
-/* Cabeçalho */
 .sidebar-header {
     flex-shrink: 0;
     padding: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+
     font-family: var(--font-editorial);
     font-size: 20px;
     font-weight: 600;
     color: var(--color-ivory);
+
     background-color: var(--color-deep-brown);
+
+    background-image:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(231, 217, 197, 0.14) 0%,
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #6b5a48 0%,
+            var(--color-deep-brown) 100%
+        );
+}
+
+.sidebar-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.sidebar-title {
+    margin: 0;
+    font: inherit;
 }
 
 /* Navegação */
