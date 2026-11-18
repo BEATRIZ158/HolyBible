@@ -1,46 +1,54 @@
-
 import './sidebar.css';
 import Logo from '../../assets/images/icons/holybible-icon.svg';
+import { Home, BookOpen, Compass, Sun, CalendarDays, Bookmark, Settings, type LucideIcon, } from 'lucide-react';
+import SidebarItem from './SidebarItem';
+
+interface MenuItem {
+    label: string;
+    icon: LucideIcon;
+}
+
+const menuItems: MenuItem[] = [
+    { label: 'Início', icon: Home },
+    { label: 'Bíblia', icon: BookOpen },
+    { label: 'Explore', icon: Compass },
+    { label: 'Devocionais', icon: Sun },
+    { label: 'Planos de Leitura', icon: CalendarDays },
+    { label: 'Favoritos', icon: Bookmark },
+];
+
+const settingsItem: MenuItem = { label: 'Configurações', icon: Settings };
 
 function Sidebar() {
     return (
         <aside className="sidebar">
 
-            {/* Cabeçalho */}
             <header className="sidebar-header">
-                <img src={Logo} alt="Logo HolyBible" className="sidebar-logo"/>
+                <img src={Logo} alt="Logo HolyBible" className="sidebar-logo" />
                 <h1 className="sidebar-title">HolyBible</h1>
             </header>
 
-            {/* Conteúdo central */}
             <div className="sidebar-content">
 
-                {/* Navegação */}
                 <nav className="sidebar-navigation">
-                    <a className="sidebar-item">Início</a>
-                    <a className="sidebar-item">Bíblia</a>
-                    <a className="sidebar-item">Explore</a>
-                    <a className="sidebar-item">Devocionais</a>
-                    <a className="sidebar-item">Planos de Leitura</a>
-                    <a className="sidebar-item">Favoritos</a>
+                    {menuItems.map((item) => (
+                        <SidebarItem key={item.label} {...item} />
+                    ))}
                 </nav>
 
-                {/* Configurações */}
                 <div className="sidebar-settings">
                     <hr className="sidebar-divider" />
 
-                    <a className="sidebar-item">Configurações</a>
+                    <SidebarItem {...settingsItem} />
                 </div>
 
             </div>
 
-            {/* Rodapé */}
             <footer className="sidebar-footer">
                 <p>
                     "Lâmpada para os meus pés é tua palavra
                     e luz para o meu caminho."
                 </p>
-
                 <span>SALMOS 119:105</span>
             </footer>
 

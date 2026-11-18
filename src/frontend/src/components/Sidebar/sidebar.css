@@ -66,22 +66,6 @@
     overflow-y: auto;
 }
 
-/* Itens do menu */
-.sidebar-item {
-    font-family: var(--font-editorial);
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.5;
-
-    padding: 12px;
-    border-radius: var(--radius-md);
-
-    color: var(--color-deep-brown);
-    text-decoration: none;
-
-    transition: background-color 0.2s ease;
-}
-
 /* Conteúdo central */
 .sidebar-content {
     flex: 1;
@@ -108,9 +92,4 @@
 .sidebar-footer {
     flex-shrink: 0;
     padding: 20px;
-}
-
-.sidebar-item:hover {
-    background-color: var(--color-caramel);
-    cursor: pointer;
 }
