@@ -17,7 +17,7 @@
 }
 
 .sidebar-item:hover {
-    background-color: var(--color-caramel);
+    background-color: var(--color-sand);
     cursor: pointer;
 }
 

@@ -1,6 +1,6 @@
 import './sidebar.css';
 import Logo from '../../assets/images/icons/holybible-icon.svg';
-import { Home, BookOpen, Compass, Sun, CalendarDays, Bookmark, Settings, type LucideIcon, } from 'lucide-react';
+import { Home, BookOpen, Compass, Sun, CalendarDays, Bookmark, Settings, ChevronsLeft, type LucideIcon, } from 'lucide-react';
 import SidebarItem from './SidebarItem';
 
 interface MenuItem {
@@ -24,8 +24,10 @@ function Sidebar() {
         <aside className="sidebar">
 
             <header className="sidebar-header">
-                <img src={Logo} alt="Logo HolyBible" className="sidebar-logo" />
-                <h1 className="sidebar-title">HolyBible</h1>
+                <div className="sidebar-brand">
+                    <img src={Logo} alt="Logo HolyBible" className="sidebar-logo" />
+                    <h1 className="sidebar-title">HolyBible</h1>
+                </div>
             </header>
 
             <div className="sidebar-content">
@@ -45,11 +47,22 @@ function Sidebar() {
             </div>
 
             <footer className="sidebar-footer">
-                <p>
+                <div className="sidebar-footer-content">
+                    <p>
                     "Lâmpada para os meus pés é tua palavra
                     e luz para o meu caminho."
-                </p>
-                <span>SALMOS 119:105</span>
+                    </p>
+                    <span>SALMOS 119:105</span>
+                </div>
+
+                <button
+                    type="button"
+                    className="sidebar-toggle"
+                    aria-label="Recolher sidebar"
+                    title="Recolher sidebar"
+                >
+                    <ChevronsLeft size={24} strokeWidth={1.5} />
+                </button>
             </footer>
 
         </aside>
