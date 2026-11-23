@@ -13,25 +13,18 @@
 
 .sidebar-header {
     flex-shrink: 0;
+    min-height: 108px;
+    box-sizing: border-box;
     padding: 20px;
 
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-editorial);
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--color-ivory);
 
+    color: var(--color-ivory);
     background-color: var(--color-deep-brown);
 
     background-image:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(231, 217, 197, 0.14) 0%,
-            transparent 55%
-        ),
         linear-gradient(
             135deg,
             #6b5a48 0%,
@@ -42,21 +35,38 @@
 .sidebar-brand {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5px;
+    gap: 14px;
 }
 
 .sidebar-logo {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
     flex-shrink: 0;
 }
 
+.sidebar-brand-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
 .sidebar-title {
     margin: 0;
-    font: inherit;
-    font-size: 24px;
+    font-family: var(--font-editorial);
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.sidebar-subtitle {
+    font-family: var(--font-editorial);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--color-ivory);
+    opacity: 0.8;
 }
 
 /* Navegação */
@@ -97,12 +107,33 @@
 /* Rodapé */
 .sidebar-footer {
     flex-shrink: 0;
-    min-height: 120px;
+    min-height: 280px;
     padding: 20px;
 
     display: flex;
     align-items: flex-end;
     gap: 16px;
+
+    color: var(--color-ivory);
+    background-image: url('../../assets/images/icons/footer-hills.svg');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+}
+
+.sidebar-footer-content p {
+    margin: 0 0 8px;
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--color-ivory);
+    line-height: 1.4;
+}
+
+.sidebar-footer-content span {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--color-ivory);
 }
 
 .sidebar-footer-content {
@@ -118,9 +149,15 @@
     place-items: center;
     flex-shrink: 0;
 
-    border: 1px solid var(--color-caramel);
+    border: 1px solid var(--color-ivory);
     border-radius: 50%;
-    background-color: transparent;
-    color: var(--color-deep-brown);
+    background-color: rgba(247, 243, 235, 0.16);
+    color: var(--color-ivory);
     cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+    background-color: var(--color-sand);
+    color: var(--color-deep-brown);
 }

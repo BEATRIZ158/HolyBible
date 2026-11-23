@@ -25,8 +25,21 @@ function Sidebar() {
 
             <header className="sidebar-header">
                 <div className="sidebar-brand">
-                    <img src={Logo} alt="Logo HolyBible" className="sidebar-logo" />
-                    <h1 className="sidebar-title">HolyBible</h1>
+
+                    <img
+                        src={Logo}
+                        alt="Logo HolyBible"/>
+
+                    <div className="sidebar-brand-info">
+                        <h1 className="sidebar-title">
+                            HolyBible
+                        </h1>
+
+                        <span className="sidebar-subtitle">
+                            LEITURA & ESTUDO
+                        </span>
+                    </div>
+
                 </div>
             </header>
 
@@ -55,12 +68,11 @@ function Sidebar() {
                     <span>SALMOS 119:105</span>
                 </div>
 
-                <button
-                    type="button"
-                    className="sidebar-toggle"
-                    aria-label="Recolher sidebar"
-                    title="Recolher sidebar"
-                >
+                <button type="button"
+                        className="sidebar-toggle"
+                        aria-label="Recolher sidebar"
+                        title="Recolher sidebar">
+
                     <ChevronsLeft size={24} strokeWidth={1.5} />
                 </button>
             </footer>
