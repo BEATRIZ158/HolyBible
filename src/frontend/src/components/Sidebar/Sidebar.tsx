@@ -1,7 +1,8 @@
 import './sidebar.css';
 import Logo from '../../assets/images/icons/holybible-icon.svg';
-import { Home, BookOpen, Compass, Sun, CalendarDays, Bookmark, Settings, ChevronsLeft, type LucideIcon, } from 'lucide-react';
 import SidebarItem from './SidebarItem';
+import { Home, BookOpen, Compass, Sun, CalendarDays, Bookmark, Settings, ChevronsLeft, ChevronsRight, type LucideIcon } from 'lucide-react';
+import { useState } from 'react';
 
 interface MenuItem {
     label: string;
@@ -15,13 +16,16 @@ const menuItems: MenuItem[] = [
     { label: 'Devocionais', icon: Sun },
     { label: 'Planos de Leitura', icon: CalendarDays },
     { label: 'Favoritos', icon: Bookmark },
+    
 ];
 
 const settingsItem: MenuItem = { label: 'Configurações', icon: Settings };
 
 function Sidebar() {
+    const [collapsed, setCollapsed] = useState(false);
+
     return (
-        <aside className="sidebar">
+        <aside className={`sidebar${collapsed ? ' collapsed' : ''}`}>
 
             <header className="sidebar-header">
                 <div className="sidebar-brand">
@@ -52,28 +56,36 @@ function Sidebar() {
                 </nav>
 
                 <div className="sidebar-settings">
-                    <hr className="sidebar-divider" />
-
                     <SidebarItem {...settingsItem} />
+                    
+                    <hr className="sidebar-divider" />
                 </div>
 
             </div>
 
             <footer className="sidebar-footer">
-                <div className="sidebar-footer-content">
-                    <p>
-                    "Lâmpada para os meus pés é tua palavra
-                    e luz para o meu caminho."
-                    </p>
-                    <span>SALMOS 119:105</span>
-                </div>
+                {collapsed ? (
+                    <div className="sidebar-footer-mini" aria-hidden="true">
+                        <span className="sidebar-footer-quote">“</span>
+                        <span className="sidebar-footer-label">DO DIA</span>
+                    </div>
+                ) : (
+                    <div className="sidebar-footer-content">
+                        <p>“Lâmpada para os meus pés é tua palavra e luz para o meu caminho.”</p>
+                        <span>SALMOS 119:105</span>
+                    </div>
+                )}
 
                 <button type="button"
                         className="sidebar-toggle"
-                        aria-label="Recolher sidebar"
-                        title="Recolher sidebar">
-
-                    <ChevronsLeft size={24} strokeWidth={1.5} />
+                        onClick={() => setCollapsed((prev) => !prev)}
+                        aria-expanded={!collapsed}
+                        aria-label={collapsed ? 'Expandir sidebar' : 'Recolher sidebar'}
+                        title={collapsed ? 'Expandir sidebar' : 'Recolher sidebar'}>
+                        {collapsed ? 
+                            ( <ChevronsRight size={24} strokeWidth={1.5} /> ) 
+                                : 
+                            ( <ChevronsLeft size={24} strokeWidth={1.5} /> )}
                 </button>
             </footer>
 

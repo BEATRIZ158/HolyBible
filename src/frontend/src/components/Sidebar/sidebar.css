@@ -1,4 +1,4 @@
-/* Estrutura principal */
+/* #region Estrutura principal */
 .sidebar {
     width: 320px;
     height: 100vh;
@@ -9,17 +9,25 @@
 
     background-color: var(--color-ivory);
     color: var(--color-deep-brown);
+
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 80px;
 }
 
 .sidebar-header {
     flex-shrink: 0;
     min-height: 108px;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 20px 26px;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 
     color: var(--color-ivory);
     background-color: var(--color-deep-brown);
@@ -32,10 +40,15 @@
         );
 }
 
+.sidebar-brand-info {
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 220px;
+    transition: opacity 0.2s ease, max-width 0.3s ease;
+}
+
 .sidebar-brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    transition: gap 0.3s ease;
 }
 
 .sidebar-logo {
@@ -43,13 +56,6 @@
     height: 48px;
     object-fit: contain;
     flex-shrink: 0;
-}
-
-.sidebar-brand-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
 }
 
 .sidebar-title {
@@ -69,26 +75,49 @@
     opacity: 0.8;
 }
 
-/* Navegação */
+/* Conteúdo central */
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+/* #endregion */
+
+/* #region Navegação */
 .sidebar-navigation {
     flex: 1;
     min-height: 0;
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 
     padding: 12px;
     overflow-y: auto;
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #E7D9C5 transparent; /* alça | trilho */
 }
 
-/* Conteúdo central */
-.sidebar-content {
-    flex: 1;
-    min-height: 0;
+/* Chrome, Edge, Safari */
+.sidebar-navigation::-webkit-scrollbar {
+    width: 6px;
+}
 
-    display: flex;
-    flex-direction: column;
+.sidebar-navigation::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 8px 0; /* evita a alça encostar no topo e na base */
+}
+
+.sidebar-navigation::-webkit-scrollbar-thumb {
+    background-color: #E7D9C5;       /* Areia */
+    border-radius: 999px;
+}
+
+.sidebar-navigation::-webkit-scrollbar-thumb:hover {
+    background-color: #A78B65;       /* Caramelo */
 }
 
 /* Configurações */
@@ -103,11 +132,12 @@
     border-top: 1px solid var(--color-caramel);
     margin: 16px 0;
 }
+/* #endregion */
 
-/* Rodapé */
+/* #region Rodapé */
 .sidebar-footer {
     flex-shrink: 0;
-    min-height: 280px;
+    min-height: 200px;
     padding: 20px;
 
     display: flex;
@@ -118,7 +148,7 @@
     background-image: url('../../assets/images/icons/footer-hills.svg');
     background-repeat: no-repeat;
     background-position: center bottom;
-    background-size: cover;
+    background-size: contain;
 }
 
 .sidebar-footer-content p {
@@ -161,3 +191,62 @@
     background-color: var(--color-sand);
     color: var(--color-deep-brown);
 }
+/* #endregion */
+
+/* #region Estado recolhido */
+
+/* Cabeçalho: só o ícone, centralizado */
+.sidebar.collapsed .sidebar-header {
+    padding: 20px 0;
+    justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-brand {
+    gap: 0;
+}
+
+.sidebar.collapsed .sidebar-brand-info {
+    opacity: 0;
+    max-width: 0;
+}
+
+/* Navegação: só ícones, centralizados */
+.sidebar.collapsed .sidebar-navigation {
+    padding: 12px 16px;
+    scrollbar-width: none;
+}
+
+.sidebar.collapsed .sidebar-navigation::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-settings {
+    padding: 0 16px 12px;
+}
+
+/* Rodapé */
+.sidebar.collapsed .sidebar-footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px 0;
+}
+
+.sidebar-footer-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.sidebar-footer-quote {
+    font-family: var(--font-editorial);
+    font-size: 36px;
+    line-height: 1;
+}
+
+.sidebar-footer-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+}
+/* #endregion */
