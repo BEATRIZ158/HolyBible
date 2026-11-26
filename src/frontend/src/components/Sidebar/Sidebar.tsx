@@ -16,7 +16,6 @@ const menuItems: MenuItem[] = [
     { label: 'Devocionais', icon: Sun },
     { label: 'Planos de Leitura', icon: CalendarDays },
     { label: 'Favoritos', icon: Bookmark },
-    
 ];
 
 const settingsItem: MenuItem = { label: 'Configurações', icon: Settings };
@@ -27,6 +26,7 @@ function Sidebar() {
     return (
         <aside className={`sidebar${collapsed ? ' collapsed' : ''}`}>
 
+            {/* Sidebar Header */}
             <header className="sidebar-header">
                 <div className="sidebar-brand">
 
@@ -47,6 +47,7 @@ function Sidebar() {
                 </div>
             </header>
 
+            {/* Sidebar Content */}
             <div className="sidebar-content">
 
                 <nav className="sidebar-navigation">
@@ -63,6 +64,7 @@ function Sidebar() {
 
             </div>
 
+            {/* Sidebar Footer */}
             <footer className="sidebar-footer">
                 {collapsed ? (
                     <div className="sidebar-footer-mini" aria-hidden="true">
