@@ -1,27 +1,38 @@
 import './sidebar.css';
 import Logo from '../../assets/images/icons/holybible-icon.svg';
 import SidebarItem from './SidebarItem';
-import { Home, BookOpen, Compass, Sun, CalendarDays, Bookmark, Settings, ChevronsLeft, ChevronsRight, type LucideIcon } from 'lucide-react';
+import { Home, BookOpen, Compass, Sun, CalendarDays, Bookmark, SlidersHorizontal, ChevronsLeft, ChevronsRight, type LucideIcon } from 'lucide-react';
 import { useState } from 'react';
 
+type SidebarItemId =
+    | 'home'
+    | 'bible'
+    | 'explore'
+    | 'devotionals'
+    | 'reading-plans'
+    | 'favorites'
+    | 'settings';
+
 interface MenuItem {
+    id: SidebarItemId;
     label: string;
     icon: LucideIcon;
 }
 
 const menuItems: MenuItem[] = [
-    { label: 'Início', icon: Home },
-    { label: 'Bíblia', icon: BookOpen },
-    { label: 'Explore', icon: Compass },
-    { label: 'Devocionais', icon: Sun },
-    { label: 'Planos de Leitura', icon: CalendarDays },
-    { label: 'Favoritos', icon: Bookmark },
+    { id: 'home', label: 'Início', icon: Home },
+    { id: 'bible', label: 'Bíblia', icon: BookOpen },
+    { id: 'explore', label: 'Explore', icon: Compass },
+    { id: 'devotionals', label: 'Devocionais', icon: Sun },
+    { id: 'reading-plans', label: 'Planos de Leitura', icon: CalendarDays },
+    { id: 'favorites', label: 'Favoritos', icon: Bookmark },
 ];
 
-const settingsItem: MenuItem = { label: 'Configurações', icon: Settings };
+const settingsItem: MenuItem = { id: 'settings', label: 'Configurações', icon: SlidersHorizontal };
 
 function Sidebar() {
     const [collapsed, setCollapsed] = useState(false);
+    const [activeItemId, setActiveItemId] = useState<SidebarItemId>('bible');
 
     return (
         <aside className={`sidebar${collapsed ? ' collapsed' : ''}`}>
@@ -52,12 +63,21 @@ function Sidebar() {
 
                 <nav className="sidebar-navigation">
                     {menuItems.map((item) => (
-                        <SidebarItem key={item.label} {...item} />
+                        <SidebarItem
+                            key={item.id}
+                            {...item}
+                            active={item.id === activeItemId}
+                            onSelect={() => setActiveItemId(item.id)}
+                        />
                     ))}
                 </nav>
 
                 <div className="sidebar-settings">
-                    <SidebarItem {...settingsItem} />
+                    <SidebarItem
+                        {...settingsItem}
+                        active={settingsItem.id === activeItemId}
+                        onSelect={() => setActiveItemId(settingsItem.id)}
+                    />
                     
                     <hr className="sidebar-divider" />
                 </div>
